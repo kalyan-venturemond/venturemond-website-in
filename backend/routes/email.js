@@ -112,18 +112,16 @@ Database ID: ${contact._id}
       `
     };
 
-    // Send both emails (Non-blocking: If email fails, we still return success because data is saved)
-    try {
-      await Promise.all([
-        transporter.sendMail(userMail),
-        transporter.sendMail(teamMail)
-      ]);
-      console.log('✅ Emails sent successfully');
-    } catch (emailError) {
-      console.error('⚠️ Email sending failed (but data saved):', emailError);
-      // We do NOT return error to frontend, because lead is captured.
-    }
+    // Send emails in BACKGROUND (Fire and Forget)
+    // We do NOT await this, so the user gets an instant response.
+    Promise.all([
+      transporter.sendMail(userMail),
+      transporter.sendMail(teamMail)
+    ])
+      .then(() => console.log('✅ Emails sent successfully in background'))
+      .catch(err => console.error('⚠️ Background email failed:', err));
 
+    // Respond immediately after DB save
     res.json({
       success: true,
       message: 'Inquiry received successfully!',

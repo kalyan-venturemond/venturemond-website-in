@@ -6,8 +6,8 @@ const router = express.Router();
 // Email transporter
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: 465,
-  secure: true,
+  port: 587, // Port 587 is more reliable for cloud servers
+  secure: false, // Use `true` for port 465, `false` for all other ports
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,

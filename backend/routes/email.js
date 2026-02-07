@@ -64,7 +64,7 @@ router.post('/send-email', async (req, res) => {
                     <td style="font-size: 16px; line-height: 24px; color:#333;">
                       <p>Hello ${name},</p>
                       <p>We hope you're doing well.</p>
-                      <p>Thanks for getting in touch we've received your message. Someone from our team will get back to you within the next 24 hours.</p>
+                      <p>Thanks for getting in touch, we've received your message. Someone from our team will get back to you within the next 24 hours</p>
                       <p>If your request is urgent, feel free to reply directly to this email.</p>
                     </td>
                   </tr>
@@ -72,7 +72,7 @@ router.post('/send-email', async (req, res) => {
                     <td style="font-size: 16px; line-height: 24px; color:#333; padding-top:10px;">
                       <p>Sincerely,<br/>
                         Team Venturemond<br/>
-                        Technology Venture Builder
+                        Technology Venture Builder 
                       </p>
                     </td>
                   </tr>
